@@ -26,6 +26,10 @@ if [ -f $versionFile ]; then
     currentVersion="$(cat $versionFile)"
 fi
 
+if [ ! -f $nodeBinaryPath ]; then
+    currentVersion=""
+fi
+
 echo "Current version : $currentVersion"
 
 if [ ! -z "$remoteVersion" ] && [ "$remoteVersion" != "$currentVersion" ]; then
