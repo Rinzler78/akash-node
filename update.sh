@@ -4,7 +4,7 @@ echo "Binary node path : $nodeBinaryPath"
 
 if [[ ! $PATH == *"$nodeBinaryPath"* ]]; then
     echo "Add to PATH :"
-    export PATH="$PATH:$nodeBinaryPath"
+    source /etc/environment && export PATH="$PATH:$nodeBinaryPath"
     echo $PATH
 fi
 
