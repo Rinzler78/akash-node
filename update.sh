@@ -39,10 +39,10 @@ if [ ! -z "$remoteVersion" ] && [ "$remoteVersion" != "$currentVersion" ]; then
     echo "$remoteVersion" > version
     echo "ln -s $nodeBinaryPath /usr/bin/akash"
 
-    if [ ! -f /usr/bin/$nodeBinaryName ]; then
+    if [ -f /usr/bin/$nodeBinaryName ]; then
         rm /usr/bin/$nodeBinaryName
     fi
-    
+
     ln -s $nodeBinaryPath /usr/bin/$nodeBinaryName
 else
     echo "node is up to date"
