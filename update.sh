@@ -42,6 +42,6 @@ else
     echo "node is up to date"
 fi
 
-if [ /usr/bin/$nodeBinaryName ]; then
+if [ ! -f /usr/bin/$nodeBinaryName ]; then
     ln -s $nodeBinaryPath /usr/bin/$nodeBinaryName
 fi
