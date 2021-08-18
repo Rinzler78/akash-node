@@ -2,11 +2,11 @@ nodeBinaryPath=$(./node.binaryDirectory.sh)
 
 echo "Binary node path : $nodeBinaryPath"
 
-if [[ ! $PATH == *"$nodeBinaryPath"* ]]; then
-    echo "Add to PATH :"
-    source /etc/environment && export PATH="$PATH:$nodeBinaryPath"
-    echo $PATH
-fi
+# if [[ ! $PATH == *"$nodeBinaryPath"* ]]; then
+#     echo "Add to PATH :"
+#     source /etc/environment && export PATH="$PATH:$nodeBinaryPath"
+#     echo $PATH
+# fi
 
 # Remote version
 remoteVersion="$(bash ./node.remoteVersion.sh)"
@@ -31,6 +31,8 @@ if [ ! -z "$remoteVersion" ] && [ "$remoteVersion" != "$currentVersion" ]; then
     ./node.download.sh $remoteVersion
     echo "node updated to : $remoteVersion"
     echo "$remoteVersion" > version
+    echo "ln -s $nodeBinaryPath /usr/bin/akash"
+    ln -s $nodeBinaryPath /usr/bin/akash
 else
     echo "node is up to date"
 fi
