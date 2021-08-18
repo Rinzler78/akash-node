@@ -9,4 +9,3 @@ if [ -z "$1" ]
 fi
 
 curl https://raw.githubusercontent.com/ovrclk/akash/master/godownloader.sh | sh -s -- "v$AKASH_VERSION"
-
