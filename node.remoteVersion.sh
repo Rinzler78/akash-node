@@ -1,0 +1,1 @@
+curl -s "https://raw.githubusercontent.com/ovrclk/net/master/mainnet/version.txt"
