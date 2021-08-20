@@ -1,0 +1,1 @@
+curl -s "$AKASH_NET/version.txt"

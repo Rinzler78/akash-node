@@ -1,0 +1,1 @@
+akash init --chain-id "$AKASH_CHAIN_ID" "$AKASH_MONIKER"
