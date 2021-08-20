@@ -1,0 +1,1 @@
+curl -s "$AKASH_NET/genesis.json" > $HOME/.akash/config/genesis.json

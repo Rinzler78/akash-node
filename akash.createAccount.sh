@@ -1,1 +1,3 @@
 akash keys add $AKASH_KEY_NAME
+echo $AKASH_ACCOUNT_PASS
+echo $AKASH_ACCOUNT_PASS
