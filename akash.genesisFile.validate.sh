@@ -1,0 +1,1 @@
+akash validate-genesis
