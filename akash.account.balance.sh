@@ -1,6 +1,11 @@
 if [ -z $AKASH_NODE ];then
-    echo "Error : AKASH_NODE must be set"
-    exit
+        echo "Warning : AKASH_NODE not set. Try to retrieve from network"
+        AKASH_NODE=$(./akash.rpc.sh)
+        
+        if [ -z $AKASH_NODE ];then
+            echo "Error : AKASH_NODE not found"
+            exit
+        fi
 fi
 
 if [ -z $AKASH_ACCOUNT_ADDRESS ];then
