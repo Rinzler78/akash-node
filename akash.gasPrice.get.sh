@@ -1,1 +1,1 @@
-cat ~/.akash/config/app.toml | grep minimum-gas-prices\ =
+cat $HOME/.akash/config/app.toml | grep minimum-gas-prices\ =

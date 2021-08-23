@@ -1,3 +1,4 @@
+#!/bin/bash
 TARGET_FILE=$1
 ORIGINAL_STRING=$2
 NEW_STRING=$3
@@ -21,4 +22,4 @@ if [ ! -f "$TARGET_FILE" ];
 fi
 
 # Replace original string by new string in target file
-sed -i "s/$ORIGINAL_STRING/$NEW_STRING/" "$TARGET_FILE"
+sed -i ".new" "s/${ORIGINAL_STRING}/${NEW_STRING}/g" "$TARGET_FILE"
