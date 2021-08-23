@@ -22,4 +22,4 @@ if [ ! -f "$TARGET_FILE" ];
 fi
 
 # Replace original string by new string in target file
-sed -i ".new" "s/${ORIGINAL_STRING}/${NEW_STRING}/g" "$TARGET_FILE"
+sed -i "s/${ORIGINAL_STRING}/${NEW_STRING}/g" "$TARGET_FILE"
