@@ -1,4 +1,4 @@
 #!/bin/bash
-DEFAULT=$(./akash.nodes.seed.download.sh)
+DEFAULT=$(./akash.seeds.download.sh)
 
 ./akash.nodes.seed.set.sh $DEFAULT
