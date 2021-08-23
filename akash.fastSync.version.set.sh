@@ -14,7 +14,7 @@ NEW_STATE=$(echo $NEW_STATE | tr '[:upper:]' '[:lower:]')
 
 case $NEW_STATE in
     v0 | v2)
-        NEW_STATE="version = $NEW_STATE"
+        NEW_STATE="version = \"$NEW_STATE\""
         ./helper.file.replace.sh "$HOME/.akash/config/config.toml" "$CURRENT_STATE" "$NEW_STATE"
         exit
     
