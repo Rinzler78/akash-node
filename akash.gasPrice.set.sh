@@ -1,5 +1,5 @@
 #!/bin/bash
-CURRENT_STATE=$(./akash.gasPrice.get.sh)
+CURRENT_STATE=$(./akash.gasPrice.sh)
 NEW_STATE="minimum-gas-prices = \"$1uakt\""
 
 if [[ $# -ne 1 ]]; then
