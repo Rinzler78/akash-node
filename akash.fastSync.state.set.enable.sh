@@ -1,2 +1,2 @@
 #!/bin/bash
-./akash.fastSync.set true
+./akash.fastSync.state.set.sh true
