@@ -3,6 +3,7 @@ function trace {
 }
 
 trace "akash status"
+echo "AKASH_NET => $AKASH_NET"
 echo "AKASH_DSEQ => $AKASH_DSEQ"
 echo "AKASH_OSEQ => $AKASH_OSEQ"
 echo "AKASH_GSEQ => $AKASH_GSEQ"
