@@ -1,5 +1,5 @@
 #!/bin/bash
-CURRENT_STATE=$(./akash.fastSync.sh)
+CURRENT_STATE=$(./akash.fastSync.state.sh)
 
 if [[ $# -ne 1 ]]; then
  echo "Error: Missing arguments"
