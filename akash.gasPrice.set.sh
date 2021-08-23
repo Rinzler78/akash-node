@@ -7,4 +7,4 @@ if [[ $# -ne 1 ]]; then
  exit
 fi
 
-./helper.script.replace.sh "$HOME/.akash/config/app.toml" "$CURRENT_STATE" "$NEW_STATE"
+./helper.file.replace.sh "$HOME/.akash/config/app.toml" "$CURRENT_STATE" "$NEW_STATE"
