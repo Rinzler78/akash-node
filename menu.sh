@@ -54,11 +54,11 @@ function executeCommand
         ./akash.seeds.sh
     ;;
     10) # Full Node Start
+        executeCommand 5
         executeCommand 6
         executeCommand 7
         executeCommand 8
         executeCommand 9
-        executeCommand 10
         ./akash.node.start.sh
     ;;
     esac
