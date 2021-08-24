@@ -1,6 +1,6 @@
 title="Akash control menu"
 prompt="Select an option :"
-options=("Update akash" "Set key name (AKASK_KEY_NAME)" "Create account" "Get account address" "ENV status" "Run full node")
+options=("Update akash" "Set key name (AKASK_KEY_NAME)" "Create account" "Get account address" "ENV status" "Node init" "Configure Gas Price" "Init genesis" "Configure fast sync" "Configure seeds" "Run full node")
 
 echo "$title"
 PS3="$prompt "
@@ -16,12 +16,12 @@ function executeCommand
     1) # Update
         ./update.sh
     ;;
-    2) # Create account
-        ./akash.account.create.sh
-    ;;
-    3) # Set AKASH_KEY_NAME
+    2) # Set AKASH_KEY_NAME
         read AKASK_KEY_NAME
         echo "AKASK_KEY_NAME => $AKASK_KEY_NAME"
+    ;;
+    3) # Create account
+        ./akash.account.create.sh
     ;;
     4) # Get account Address
         ./akash.account.address.sh
