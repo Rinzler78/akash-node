@@ -8,7 +8,7 @@ PS3="$prompt "
 function executeCommand 
 {
     command=$1
-    commandName=${options[$command]}
+    commandName=$(${options[$command]} - 1)
 
     echo "Executing command [$command] => $commandName"
 
