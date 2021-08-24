@@ -18,6 +18,7 @@ function executeCommand
     ;;
     2) # Create account
         ./akash.account.create.sh
+        export AKASH_ACCOUNT_ADDRESS="$(./akash.account.address.sh)"
     ;;
     3) # Get account Address
         ./akash.account.address.sh
@@ -54,6 +55,7 @@ function executeCommand
         ./akash.seeds.sh
     ;;
     10) # Full Node Start
+        executeCommand 1
         executeCommand 5
         executeCommand 6
         executeCommand 7
