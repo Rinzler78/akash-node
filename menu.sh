@@ -68,12 +68,15 @@ function executeCommand
     esac
 }
 
-select opt in "${options[@]}" "Quit"; do 
-    case "$REPLY" in
-    [1-${#options[@]}])
+select opt in "${options[@]}" "Quit"; do
+
+    if [ $REPLY > 0 ] && [ $REPLY -le ${#options[@]} ];
+    then
         executeCommand $REPLY
-    ;;
-    $((${#options[@]}+1))) echo "Goodbye!"; break;;
-    *) echo "Invalid option. Try another one.";continue;;
-    esac
+        else
+            case "$REPLY" in
+            $((${#options[@]}+1))) echo "Goodbye!"; break;;
+            *) echo "Invalid option. Try another one.";continue;;
+            esac
+    fi
 done
