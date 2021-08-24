@@ -50,7 +50,7 @@ function executeCommadn
 
 select opt in "${options[@]}" "Quit"; do 
     case "$REPLY" in
-    ${#options[@]}[1-${#options[@]}]) echo "You picked $opt"
+    [1-${#options[@]}]) echo "You picked $opt"
         executeCommadn $REPLY
     ;;
     $((${#options[@]}+1))) echo "Goodbye!"; break;;
