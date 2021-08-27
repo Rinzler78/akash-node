@@ -75,6 +75,7 @@ executeCommand ()
         executeCommand 8
         executeCommand 9
         executeCommand 10
+    ;;
     12) # Full Node Start
         executeCommand 11
         ./akash.node.start.sh
