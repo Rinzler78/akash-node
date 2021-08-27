@@ -83,9 +83,6 @@ executeCommand ()
     esac
 }
 
-executeCommand 11
-exit
-
 select opt in "${options[@]}" "Quit"; do
 
     if [ $REPLY > 0 ] && [ $REPLY -le ${#options[@]} ];
