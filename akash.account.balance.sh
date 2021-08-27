@@ -1,6 +1,7 @@
 if [ -z $AKASH_NODE ];then
         echo "Warning : AKASH_NODE not set. Try to retrieve from network"
         AKASH_NODE=$(./akash.rpc.sh)
+        echo "AKASH_NODE => $AKASH_NODE"
         
         if [ -z $AKASH_NODE ];then
             echo "Error : AKASH_NODE not found"
@@ -12,6 +13,8 @@ if [ -z $AKASH_ACCOUNT_ADDRESS ];then
     echo "Warning : AKASH_ACCOUNT_ADDRESS not set. Try to retrieve from keys"
     AKASH_ACCOUNT_ADDRESS=$(./akash.account.address.sh)
     
+    echo "AKASH_ACCOUNT_ADDRESS => $AKASH_ACCOUNT_ADDRESS"
+            
     if [ -z $AKASH_ACCOUNT_ADDRESS ];then
         echo "Error : AKASH_ACCOUNT_ADDRESS not found"
         exit

@@ -1,11 +1,22 @@
 title="Akash control menu"
 prompt="Select an option :"
-options=("Update akash" "Create account" "Get account address" "ENV status" "Node init" "Configure Gas Price" "Init genesis" "Configure fast sync" "Configure seeds" "Run full node")
+options=(\
+"Update akash binary"\
+ "Account : Create"\
+ "Account : Address"\
+ "Account : Balance"\
+ "ENV : DUMP"\
+ "Node : Init"\
+ "Config : Gas Price"\
+ "Node : Init genesis"\
+ "Config : fast sync"\
+ "Config : seeds"\
+ "Run full node")
 
 echo "$title"
 PS3="$prompt "
 
-function executeCommand 
+executeCommand ()
 {
     command=$1
     commandName=${options[$(($command-1))]}
@@ -18,53 +29,58 @@ function executeCommand
     ;;
     2) # Create account
         ./akash.account.create.sh
-        export AKASH_ACCOUNT_ADDRESS="$(./akash.account.address.sh)"
     ;;
     3) # Get account Address
         ./akash.account.address.sh
+        export AKASH_ACCOUNT_ADDRESS="$(./akash.account.address.sh)"
+        ./akash.config.account.address.set.sh $AKASH_ACCOUNT_ADDRESS
     ;;
-    4) # akash env status
-        ./akash.status.sh
+    4) # Get account Balance
+        ./akash.account.balance.sh
     ;;
-    5) # Node init
-        export AKASH_MONIKER="TestWalletMoniker"
-        echo "AKASH_MONIKER => $AKASH_MONIKER"
-        export AKASH_CHAIN_ID="$(./akash.chainId.get.sh)"
-        echo "AKASH_CHAIN_ID => $AKASH_CHAIN_ID"
+    5) # akash env status
+        ./akash.env.dump.sh
+    ;;
+    6) # Node init
         ./akash.node.Init.sh
     ;;
-    6) # Set Gas Price
-        ./akash.gasPrice.sh
-        export GAS_PRICE=0.025
-        ./akash.gasPrice.set.sh $GAS_PRICE
-        ./akash.gasPrice.sh
+    7) # Set Gas Price
+        echo "Gas price : Current($(./akash.gasPrice.sh)), New ($($AKASH_GAS_PRICE))"
+        ./akash.gasPrice.set.sh $AKASH_GAS_PRICE
     ;;
-    7) # Init genesis file
+    8) # Init genesis file
+        echo "Genesis file : Download"
         ./akash.genesisFile.download.sh
+        
+        echo "Genesis file : Validate"
         ./akash.genesisFile.validate.sh
     ;;
-    8) # Enable fast sync
-        ./akash.fastSync.state.sh
+    9) # Config fast sync
+        echo "Fast Sync State : Current ($(./akash.fastSync.state.sh)), New (true)"
         ./akash.fastSync.state.set.enable.sh
+
+        echo "Fast Sync Version : Current ($(./akash.fastSync.version.sh)), New (v2)"
         ./akash.fastSync.version.set.v2.sh
-        ./akash.fastSync.state.sh
     ;;
-    9) # Set seeds
-        ./akash.seeds.sh
+    10) # Set seeds
+        echo "Seeds : Current ($(./akash.seeds.sh), New ($(./akash.seeds.download.sh))"
         ./akash.seeds.set.default.sh
-        ./akash.seeds.sh
     ;;
-    10) # Full Node Start
+    11) # Full Node Start
         executeCommand 1
         executeCommand 5
         executeCommand 6
         executeCommand 7
         executeCommand 8
         executeCommand 9
+        executeCommand 10
         ./akash.node.start.sh
     ;;
     esac
 }
+
+executeCommand 11
+exit
 
 select opt in "${options[@]}" "Quit"; do
 

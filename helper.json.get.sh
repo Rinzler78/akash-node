@@ -13,9 +13,7 @@ if [ -z $KEY ];then
 fi
 
 if [ -f $JSON_FILE ]; then
-  REDIRECT=/dev/tty
+  jq -r ".$KEY" $JSON_FILE
 else
-  REDIRECT=/dev/null
+  jq -r ".$KEY" $JSON_FILE &> /dev/null
 fi
-
-jq -r ".$KEY" $JSON_FILE &> $REDIRECT

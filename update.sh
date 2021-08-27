@@ -2,7 +2,9 @@ nodeBinaryPath=$(./node.binaryDirectory.sh)
 nodeBinaryDirectory=$(dirname "$nodeBinaryPath")
 nodeBinaryName=$(basename "$nodeBinaryPath")
 
-echo "Binary node path : $nodeBinaryPath"
+# echo "Binary node path : $nodeBinaryPath"
+# echo "Binary directory : $nodeBinaryDirectory"
+# echo "Binary name : $nodeBinaryName"
 
 # if [[ ! $PATH == *"$nodeBinaryPath"* ]]; then
 #     echo "Add to PATH :"
@@ -11,20 +13,16 @@ echo "Binary node path : $nodeBinaryPath"
 # fi
 
 # Remote version
-remoteVersion="$(bash ./node.remoteVersion.sh)"
+remoteVersion="$(./node.remoteVersion.sh)"
 echo "Remote version : $remoteVersion"
 
 if [ -z "$remoteVersion" ];then
     echo "Fail to retrieve remote version"
+    exit
 fi
 
 # Current version
-versionFile=version
-currentVersion=""
-
-if [ -f $versionFile ]; then
-    currentVersion="$(cat $versionFile)"
-fi
+currentVersion=$(./node.version.sh)
 
 if [ ! -f $nodeBinaryPath ]; then
     currentVersion=""
@@ -33,10 +31,9 @@ fi
 echo "Current version : $currentVersion"
 
 if [ ! -z "$remoteVersion" ] && [ "$remoteVersion" != "$currentVersion" ]; then
-    echo "Downloading new node version"
+    echo "Downloading version ($remoteVersion)"
     ./node.download.sh $remoteVersion
-    echo "node updated to : $remoteVersion"
-    echo "$remoteVersion" > version
+    echo "Updated to : $remoteVersion"
     echo "ln -s $nodeBinaryPath /usr/bin/akash"
 else
     echo "node is up to date"
@@ -45,3 +42,5 @@ fi
 if [ ! -f /usr/bin/$nodeBinaryName ]; then
     ln -s $nodeBinaryPath /usr/bin/$nodeBinaryName
 fi
+
+echo "**** Update ***"
