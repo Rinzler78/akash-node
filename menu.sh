@@ -11,7 +11,8 @@ options=(\
  "Node : Init genesis"\
  "Config : fast sync"\
  "Config : seeds"\
- "Run full node")
+ "Node : Setup full Node"
+ "Node : Start")
 
 echo "$title"
 PS3="$prompt "
@@ -66,7 +67,7 @@ executeCommand ()
         echo "Seeds : Current ($(./akash.seeds.sh), New ($(./akash.seeds.download.sh))"
         ./akash.seeds.set.default.sh
     ;;
-    11) # Full Node Start
+    11) # Full node setup
         executeCommand 1
         executeCommand 5
         executeCommand 6
@@ -74,6 +75,8 @@ executeCommand ()
         executeCommand 8
         executeCommand 9
         executeCommand 10
+    12) # Full Node Start
+        executeCommand 11
         ./akash.node.start.sh
     ;;
     esac
